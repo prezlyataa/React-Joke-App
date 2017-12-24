@@ -1,0 +1,30 @@
+.list {
+  width: 48%;
+  border: 1px solid #333; }
+  .list_header {
+    display: flex;
+    justify-content: space-between; }
+    .list_header h3 {
+      margin-left: 10px; }
+    .list_header .search {
+      margin-right: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      align-self: center; }
+      .list_header .search:focus {
+        outline: none; }
+    .list_header button {
+      align-self: center; }
+  .list_person ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: wrap;
+    list-style: none;
+    padding: 0; }
+    .list_person ul .person {
+      display: inline-block;
+      padding: 10px;
+      border: 1px solid #333;
+      margin: 5px; }
+
+/*# sourceMappingURL=list.css.map */

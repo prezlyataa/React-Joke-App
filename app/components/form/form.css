@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  justify-content: space-between; }
+  .content .form_submit {
+    width: 48%;
+    border: 1px solid #333;
+    padding: 10px; }
+    .content .form_submit .input_name {
+      padding: 5px;
+      width: 50%;
+      border-radius: 5px; }
+      .content .form_submit .input_name:focus {
+        outline: none; }
+    .content .form_submit .radio {
+      margin: 8px 0; }
+  .content .btn_block {
+    text-align: center;
+    padding-top: 10px; }
+    .content .btn_block .btn {
+      padding: 5px;
+      margin: 5px; }
+
+/*# sourceMappingURL=form.css.map */

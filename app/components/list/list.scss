@@ -1,0 +1,45 @@
+.list {
+  width: 48%;
+  border: 1px solid #333;
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      margin-left: 10px;
+    }
+
+    .search {
+      margin-right: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      align-self: center;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      align-self: center;
+    }
+  }
+
+  &_person {
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: wrap;
+      list-style: none;
+      padding: 0;
+
+      .person {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid #333;
+        margin: 5px;
+      }
+    }
+  }
+}
