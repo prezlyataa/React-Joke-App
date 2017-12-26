@@ -31,7 +31,7 @@ export class Gender extends Component {
                     </div>
                     <div className="radio">
                         <label>
-                            <input type="radio" value="Female" name="gender" onClick={this.handleClick.bind(this, "Female")}required/>
+                            <input type="radio" value="Female" name="gender" onClick={this.handleClick.bind(this, "Female")} required/>
                             Female
                         </label>
                     </div>

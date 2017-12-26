@@ -134,7 +134,7 @@ export class Form extends Component {
                     </div>
                 </div>
 
-                <List persons={this.state.persons} sortList={this.sortList} remove={this.remove} searchHandler={this.searchHandler}/>
+                <List persons={this.state.persons} remove={this.remove} searchHandler={this.searchHandler}/>
             </div>
         );
     }

@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { Popup } from 'app/components/popup';
 import './list.scss';
 
 export class List extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showPopup: false
+        };
     }
 
-    remove(id){
-        this.props.remove(id);
+    togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
     }
 
     searchHandler(id) {
@@ -28,7 +34,7 @@ export class List extends Component {
                <div className='list_person'>
                    <ul>
                        {this.props.persons.map((person, id) => (
-                           <div className='person'  key={id}>
+                           <div className='person' onClick={this.togglePopup.bind(this)}  key={id}>
                                <li>
                                    <h3>
                                        {person.name}
@@ -36,15 +42,20 @@ export class List extends Component {
                                    <h4>
                                        {person.gender}
                                    </h4>
-                                   <h5>
-                                       {person.selectedJoke}
-                                   </h5>
-                                   <button onClick={this.remove.bind(this, person)}>Remove</button>
                                </li>
                            </div>
                        ))}
                    </ul>
                </div>
+
+               {this.state.showPopup ?
+                   <Popup
+                       persons={this.props.persons}
+                       remove={this.props.remove}
+                       closePopup={this.togglePopup.bind(this)}
+                   />
+                   : null
+               }
            </div>
         );
     }
