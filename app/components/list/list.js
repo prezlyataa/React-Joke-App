@@ -6,7 +6,8 @@ export class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPopup: false
+            showPopup: false,
+            persons: this.props.persons
         };
     }
 
@@ -20,12 +21,16 @@ export class List extends Component {
         this.props.searchHandler(id);
     }
 
+    sortPersons() {
+        this.props.sortPersons();
+    }
+
     render() {
         return(
            <div className='list'>
                <div className='list_header'>
                    <h3>Persons: {this.props.persons.length}</h3>
-                   {/*<button onClick={this.sortList.bind(this)}>Sort</button>*/}
+                   <button onClick={this.sortPersons.bind(this)}>Sort</button>
                    <input type="text" className="search" placeholder='Search' onChange={this.searchHandler.bind(this)}/>
                </div>
 
@@ -36,10 +41,11 @@ export class List extends Component {
                        {this.props.persons.map((person, id) => (
                            <div className='person' onClick={this.togglePopup.bind(this)}  key={id}>
                                <li>
-                                   <h3>
+                                   <h2 className='person_name'>
                                        {person.name}
-                                   </h3>
-                                   <h4>
+                                   </h2>
+                                   <hr/>
+                                   <h4 className='person_gender'>
                                        {person.gender}
                                    </h4>
                                </li>

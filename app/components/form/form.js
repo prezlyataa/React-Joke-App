@@ -22,6 +22,7 @@ export class Form extends Component {
         this.remove = this.remove.bind(this);
         this.reset = this.reset.bind(this);
         this.searchHandler = this.searchHandler.bind(this);
+        this.sortPersons = this.sortPersons.bind(this);
     }
 
     getJokes() {
@@ -108,6 +109,22 @@ export class Form extends Component {
         });
     }
 
+    sortPersons() {
+        function compare(a,b) {
+            if (a.name < b.name)
+                return -1;
+            if (a.name > b.name)
+                return 1;
+            return 0;
+        }
+
+        let sortedPersons = this.state.persons.sort(compare);
+
+        this.setState({
+            persons: sortedPersons
+        })
+    }
+
     render() {
         return(
             <div className='content'>
@@ -134,7 +151,7 @@ export class Form extends Component {
                     </div>
                 </div>
 
-                <List persons={this.state.persons} remove={this.remove} searchHandler={this.searchHandler}/>
+                <List persons={this.state.persons} remove={this.remove} searchHandler={this.searchHandler} sortPersons={this.sortPersons}/>
             </div>
         );
     }

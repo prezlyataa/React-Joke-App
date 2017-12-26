@@ -20,11 +20,16 @@
     justify-content: flex-start;
     flex-flow: wrap;
     list-style: none;
-    padding: 0; }
+    padding: 10px 20px; }
     .list_person ul .person {
       display: inline-block;
-      padding: 10px;
+      padding: 10px 20px;
       border: 1px solid #333;
-      margin: 5px; }
+      margin: 5px;
+      border-radius: 4px; }
+      .list_person ul .person_name, .list_person ul .person_gender {
+        text-align: center; }
+      .list_person ul .person:hover {
+        cursor: pointer; }
 
 /*# sourceMappingURL=list.css.map */
