@@ -10,7 +10,6 @@
     #input_name {
       padding: 5px;
       width: 50%;
-      border-radius: 5px;
       transition: all 0.1s;
 
       &:focus {
@@ -34,6 +33,10 @@
     .btn {
       padding: 5px;
       margin: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
