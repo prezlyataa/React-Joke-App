@@ -14,17 +14,15 @@ export class Popup extends Component {
     render() {
         return (
             <div className='popup' >
-                {this.props.persons.map((person, id)=> (
-                    <div className='popup_inner' key={id}>
-                        <h2 className='popup_inner_name'>{person.name}</h2>
-                        <hr/>
-                        <h4 className='popup_inner_joke'>{person.selectedJoke}</h4>
-                        <div className='popup_inner_btn'>
-                            <button onClick={this.remove.bind(this, person)}>Remove</button>
-                            <button onClick={this.props.closePopup}>Close</button>
-                        </div>
+                <div className='popup_inner'>
+                    <h2 className='popup_inner_name'>{this.props.selectedPerson.name}</h2>
+                    <hr/>
+                    <h4 className='popup_inner_joke'>{this.props.selectedPerson.selectedJoke}</h4>
+                    <div className='popup_inner_btn'>
+                        <button onClick={this.remove.bind(this, this.props.selectedPerson)}>Remove</button>
+                        <button onClick={this.props.closePopup}>Close</button>
                     </div>
-                ))}
+                </div>
             </div>
         );
     }

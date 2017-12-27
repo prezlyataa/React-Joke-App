@@ -7,13 +7,14 @@ export class List extends Component {
         super(props);
         this.state = {
             showPopup: false,
-            persons: this.props.persons
+            selectedPerson: {}
         };
     }
 
-    togglePopup() {
+    togglePopup(person) {
         this.setState({
-            showPopup: !this.state.showPopup
+            showPopup: !this.state.showPopup,
+            selectedPerson: person
         });
     }
 
@@ -39,7 +40,7 @@ export class List extends Component {
                <div className='list_person'>
                    <ul>
                        {this.props.persons.map((person, id) => (
-                           <div className='person' onClick={this.togglePopup.bind(this)}  key={id}>
+                           <div className='person' onClick={this.togglePopup.bind(this, person)}  key={id}>
                                <li>
                                    <h2 className='person_name'>
                                        {person.name}
@@ -56,7 +57,7 @@ export class List extends Component {
 
                {this.state.showPopup ?
                    <Popup
-                       persons={this.props.persons}
+                       selectedPerson={this.state.selectedPerson}
                        remove={this.props.remove}
                        closePopup={this.togglePopup.bind(this)}
                    />
