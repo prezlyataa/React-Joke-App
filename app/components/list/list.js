@@ -22,8 +22,12 @@ export class List extends Component {
         this.props.searchHandler(id);
     }
 
-    sortPersons() {
-        this.props.sortPersons();
+    sortPersonsAZ() {
+        this.props.sortPersonsAZ();
+    }
+
+    sortPersonsZA() {
+        this.props.sortPersonsZA();
     }
 
     render() {
@@ -31,7 +35,10 @@ export class List extends Component {
            <div className='list'>
                <div className='list_header'>
                    <h3>Persons: {this.props.persons.length}</h3>
-                   <button onClick={this.sortPersons.bind(this)}>Sort</button>
+                   <div className='sorted_btn'>
+                       <button onClick={this.sortPersonsAZ.bind(this)}>A-Z</button>
+                       <button onClick={this.sortPersonsZA.bind(this)}>Z-A</button>
+                   </div>
                    <input type="text" className="search" placeholder='Search' onChange={this.searchHandler.bind(this)}/>
                </div>
 
