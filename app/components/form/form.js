@@ -44,7 +44,8 @@ export class Form extends Component {
 
     handleChange(e) {
         this.setState({
-            name: e.target.value
+            name: e.target.value,
+            errors: false
         })
     }
 
@@ -52,18 +53,20 @@ export class Form extends Component {
         e.preventDefault();
 
         if (!this.state.name.length) {
-            return;
+            let errorClass = document.getElementById('input_name');
+            errorClass.className = 'validation';
+        } else {
+            document.getElementById('input_name').removeAttribute('class');
+            const newPerson = {
+                name: this.state.name,
+                gender: this.state.gender,
+                selectedJoke: this.state.selectedJoke
+            };
+
+            this.setState(prevState => ({
+                persons: prevState.persons.concat(newPerson)
+            }));
         }
-
-        const newPerson = {
-            name: this.state.name,
-            gender: this.state.gender,
-            selectedJoke: this.state.selectedJoke
-        };
-
-        this.setState(prevState => ({
-            persons: prevState.persons.concat(newPerson)
-        }));
     }
 
     selectGender = (selectedGender) => {
@@ -86,6 +89,7 @@ export class Form extends Component {
         });
 
         this.myFormRef.reset();
+        document.getElementById('input_name').removeAttribute('class');
 
         appService.getJokes()
             .then(data => {
@@ -99,8 +103,7 @@ export class Form extends Component {
     }
 
     filterList(event){
-        let updatedList = this.state.persons;
-        updatedList = updatedList.filter(function(item){
+        let updatedList = this.state.persons.filter(function(item){
             return item.name.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
@@ -150,7 +153,7 @@ export class Form extends Component {
                         <h3>Add new person</h3>
 
                         <input
-                            className='input_name'
+                            id='input_name'
                             onChange={this.handleChange}
                             value={this.state.name}
                             placeholder='Name'
