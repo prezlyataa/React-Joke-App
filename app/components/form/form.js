@@ -53,7 +53,7 @@ export class Form extends Component {
         e.preventDefault();
 
         if (!this.state.name.length) {
-            let errorClass = document.getElementById('input_name');
+            const errorClass = document.getElementById('input_name');
             errorClass.className = 'validation';
         } else {
             document.getElementById('input_name').removeAttribute('class');
@@ -91,26 +91,18 @@ export class Form extends Component {
         this.myFormRef.reset();
         document.getElementById('input_name').removeAttribute('class');
 
-        appService.getJokes()
-            .then(data => {
-                this.setState({
-                    jokes: data.value
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        this.getJokes()
     }
 
-    filterList(event){
-        let updatedList = this.state.persons.filter(function(item){
-            return item.name.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
+    getFiltered() {
+        const { persons, query } = this.state;
 
-        this.setState({
-            persons: updatedList
-        });
+        return persons
+            .filter(({ name }) => name.toLowerCase().search(query) !== -1);
+    }
+
+    filterList(query){
+        this.setState({ query });
     }
 
     sortPersonsAZ() {
@@ -149,6 +141,7 @@ export class Form extends Component {
         return(
             <div className='content'>
                 <div className='form_submit'>
+                    {/* form - separate compoent */}
                     <form ref={(el) => this.myFormRef = el}>
                         <h3>Add new person</h3>
 
@@ -172,7 +165,7 @@ export class Form extends Component {
                 </div>
 
                 <List
-                    persons={this.state.persons}
+                    persons={this.getFiltered()}
                     remove={this.remove}
                     sortPersonsAZ={this.sortPersonsAZ}
                     sortPersonsZA={this.sortPersonsZA}

@@ -19,7 +19,7 @@ export class List extends Component {
     }
 
     filterList(event) {
-        this.props.filterList(event);
+        this.props.filterList(event.target.value.toLowerCase());
     }
 
     sortPersonsAZ() {

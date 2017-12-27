@@ -13,7 +13,7 @@ export class Popup extends Component {
 
     render() {
         return (
-            <div className='popup' >
+            <div className='popup'>
                 <div className='popup_inner'>
                     <h2 className='popup_inner_name'>{this.props.selectedPerson.name}</h2>
                     <hr/>
