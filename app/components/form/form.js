@@ -21,9 +21,9 @@ export class Form extends Component {
         this.selectJokes = this.selectJokes.bind(this);
         this.remove = this.remove.bind(this);
         this.reset = this.reset.bind(this);
-        this.searchHandler = this.searchHandler.bind(this);
         this.sortPersonsAZ = this.sortPersonsAZ.bind(this);
         this.sortPersonsZA = this.sortPersonsZA.bind(this);
+        this.filterList = this.filterList.bind(this);
     }
 
     getJokes() {
@@ -98,15 +98,15 @@ export class Form extends Component {
             })
     }
 
-    searchHandler(id) {
-        let searcjQery = id.target.value.toLowerCase(),
-            displayedPersons = this.state.persons.filter((person) => {
-                let searchValue = person.name.toLowerCase();
-                return searchValue.indexOf(searcjQery) !== -1;
-            });
+    filterList(event){
+        let updatedList = this.state.persons;
+        updatedList = updatedList.filter(function(item){
+            return item.name.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
 
         this.setState({
-            persons: displayedPersons
+            persons: updatedList
         });
     }
 
@@ -171,9 +171,9 @@ export class Form extends Component {
                 <List
                     persons={this.state.persons}
                     remove={this.remove}
-                    searchHandler={this.searchHandler}
                     sortPersonsAZ={this.sortPersonsAZ}
                     sortPersonsZA={this.sortPersonsZA}
+                    filterList={this.filterList}
                 />
             </div>
         );

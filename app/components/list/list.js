@@ -18,8 +18,8 @@ export class List extends Component {
         });
     }
 
-    searchHandler(id) {
-        this.props.searchHandler(id);
+    filterList(event) {
+        this.props.filterList(event);
     }
 
     sortPersonsAZ() {
@@ -39,7 +39,7 @@ export class List extends Component {
                        <button onClick={this.sortPersonsAZ.bind(this)}>A-Z</button>
                        <button onClick={this.sortPersonsZA.bind(this)}>Z-A</button>
                    </div>
-                   <input type="text" className="search" placeholder='Search' onChange={this.searchHandler.bind(this)}/>
+                   <input type="text" className="search" placeholder='Search' onChange={this.filterList.bind(this)}/>
                </div>
 
                <hr/>
